@@ -50,16 +50,6 @@ var app = angular.module('appRoutes', ['ngRoute'])
      controllerAs: 'showItems'
    })
 
-   .when('/morecatalogue/:currentPage/:type',{
-     templateUrl: 'app/views/pages/morecatalogue.html',
-     controller: 'moreCtrl',
-     controllerAs: 'moreCtrl'
-   })
-   .when('/productdetails/:id',{
-     templateUrl: 'app/views/pages/productdetails.html',
-     controller: 'detailsCtrl',
-     controllerAs: 'detailsCtrl'
-   })
 
    .when('/viewClients',{
      templateUrl: 'app/views/pages/viewClients.html',
@@ -88,6 +78,13 @@ var app = angular.module('appRoutes', ['ngRoute'])
      templateUrl: 'app/views/pages/addclient.html',
      controller: 'addClientCtrl',
      controllerAs: 'addClientCtrl',
+     authenticated: true
+   })
+   
+      .when('/addpo',{
+     templateUrl: 'app/views/pages/addpo.html',
+     controller: 'addpoCtrl',
+     controllerAs: 'addpoCtrl',
      authenticated: true
    })
 
