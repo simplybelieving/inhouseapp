@@ -3,6 +3,12 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 mongoose.Promise = require('bluebird');
 
+var PurchaseOrderSchema = new Schema({
+  user: {type: String, required: true},
+  ponumber: {type: String, required: true, unique: true, lowecase:true},
+  date: {type: String, required: true}
+});
+
 var UserSchema = new Schema({
   username: {type: String, required: true, unique: true, lowecase:true},
   password: {type: String, required: true}
@@ -53,7 +59,7 @@ var ClientSchema = new Schema({
 });
 
 
-
+var PurchaseOrder= mongoose.model('PurchaseOrder', PurchaseOrderSchema);
 var Product= mongoose.model('Product', ProductSchema);
 var Pricelist = mongoose.model('Pricelist', PricelistSchema );
 var Client = mongoose.model('Client', ClientSchema);
@@ -61,6 +67,7 @@ var User = mongoose.model('User', UserSchema);
 
 module.exports = {
     Client: Client,
+    PurchaseOrder: PurchaseOrder,
     User: User,
     Pricelist: Pricelist,
     Product: Product
