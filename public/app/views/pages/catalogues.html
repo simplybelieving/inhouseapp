@@ -1,0 +1,113 @@
+<div class="page-header">
+
+  <div >
+    <div >
+    <strong>Need Help?</strong>
+    </div>
+
+
+  <div class="navbar-form">
+    <div class="form-group">
+      <input type="text" class="form-control" name="search" placeholder="Let's Suggest" ng-model="searchKeyword">
+    </div>
+
+  </div><form ng-submit="showItems.sendArray();">    <button class="btn btn-primary" type="submit"> GO </button> </form>
+
+
+  <div class="container">
+
+      <div class="row">
+       <div  ng-repeat= "items in showItems.items | filter: searchKeyword | pagination:(currentPage-1) * showItems.limit | limitTo: 1">
+
+
+      <div ng-show="searchKeyword">
+
+
+          <table class="table">
+
+              <tr>
+           <td><a href="/productdetails/{{ items._id }}">
+            {{items.productname}}
+          </a></td>
+
+            <td> <label>PRICE:</label>
+             <input class="form-control" type="number" name="price[$index]" ng-model="showItems.items[$index].price"></td>
+
+            <td><label>UNIT:</label>
+            <input class="form-control" type="text" name="unit[$index]" ng-model="showItems.items[$index].unit"></td>
+
+            <td><label>DISCOUNT:</label>
+            <input class="form-control" type="text" name="unit[$index]" ng-model="showItems.items[$index].discount">
+
+            </td>
+
+            <td>   <form ng-submit="showItems.arrayStorage(items, $index, productid, productname);">
+
+       <button class="btn btn-default" type="submit"> Add to Pricelist </button>
+
+            <!--    <label>PRICE:</label>
+               <input class="form-control" type="number" name="price[$index]" ng-model="showItems.items[$index].price">
+               </br>
+               <label>UNIT:</label>
+               <input class="form-control" type="text" name="unit[$index]" ng-model="showItems.items[$index].unit">
+               </br>
+               <label>DISCOUNT:</label>
+               <input class="form-control" type="text" name="unit[$index]" ng-model="showItems.items[$index].discount">
+               </br>
+                <button class="btn btn-default" type="submit"> Add to Pricelist </button> <br></br> -->
+
+             </form>
+            </td>
+            </tr>
+
+
+
+          <input class="form-control" type="hidden" ng-init="productname = items.productname" ng-model="productname">
+          <input class="form-control"  type="hidden" ng-init="productid = items._id" ng-model="productid">
+         </table>
+
+
+
+
+
+      </div>
+
+
+    </div> </div> </div>
+
+
+<!--<form ng-submit="showItems.sendArray();">    <button class="btn btn-primary" type="submit"> GO </button> </form>-->
+
+
+  </div>
+
+
+<table class="table">
+
+  <thead>
+  <tr>
+
+    <th>Product</th>
+    <th>Price</th>
+    <th>Unit</th>
+    <th>Discount</th>
+  </tr>
+  </thead>
+
+  <tr  ng-repeat= "cart in showItems.shopping track by $index">
+
+
+      <td>{{cart.productname}} </td>
+      <td> {{cart.price}} </td>
+      <td>{{cart.unit}}</td>
+      <td> {{cart.discount}} </td>
+
+
+
+  </tr></table>
+
+</div>
+
+<div class="row show-hide-message" ng-show="showItems.successMsg">
+  <div class="alert alert-success">{{ showItems.successMsg}}</div>
+</div>

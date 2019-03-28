@@ -1,0 +1,60 @@
+<div class="page-header">
+
+  <div >
+    <div >
+      <strong>Need help?</strong>
+    </div>
+
+
+  <div class="navbar-form">
+    <div class="form-group">
+      <input type="text" class="form-control" name="search" placeholder="Let's Suggest" ng-model="searchKeyword">
+    </div>
+  <button type="button" class="btn btn-default">Suggestion</button>
+  </div>
+
+
+  <div class="container">
+
+      <div class="row">
+       <div  ng-repeat= "items in viewClientsCtrl.items | filter: searchKeyword | pagination:(currentPage-1) * viewClientsCtrl.limit | limitTo: 3">
+
+
+      <div ng-show="searchKeyword">
+          <table class="table">
+          <tr>
+
+          <td>
+          <a href="/catalogues/{{ items._id }}">  Add Quote for {{items.name}} </a>
+          </td>
+
+          <td>
+          <a href="/viewPricelist/{{ items._id }}"> {{items.name}}'s  Current Pricelist for  </a>
+          </td>
+          </tr>
+
+
+         </table>
+      </div>
+
+
+    </div>  </div> </div>
+
+
+  </div>
+
+
+
+  <div class="row">
+    <div style="text-align: center;" class="col-lg-6 m-b-lg">
+  <img style="display: block;margin-left: auto;margin-right: auto;width: 50%; max-width: 100%; padding-bottom: 5%; height: auto; width: auto\9;"  src="assets/css/bird-6.jpg">
+    <button type="button" class="btn btn-default"><a href="/addproduct"><label>Add New Products</label></a></button>
+  </div>
+    <div  style="text-align: center;" class="col-lg-6 m-b-lg">
+  <img style="display: block;margin-left: auto;margin-right: auto;width: 50%; max-width: 100%; padding-bottom: 5%; height: auto; width: auto\9;"  src="assets/css/bird-7.jpg">
+     <button type="button" class="btn btn-default"><a href="/addclient"><label>Add Customer/Supplier</label></a></button>
+    </div>
+  </div>
+
+
+</div>

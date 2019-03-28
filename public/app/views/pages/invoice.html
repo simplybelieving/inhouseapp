@@ -1,0 +1,27 @@
+
+
+<form ng-submit="click(search);">
+  <label class="child-label" for="existing-phases">CUSTOMER:&nbsp;&nbsp;</label>
+<input type="text" ng-model="search" list="names"  style="min-width:50%"> <br></br>
+  <datalist id="names" class="form-control" ng-model="name">
+
+    <option ng-repeat="items in invoiceCtrl.items | filter:search | limitTo:1" value="{{items.name}}">
+    {{ items.address}}  / TIN: {{ items.tin}}
+    </option>
+
+
+  </datalist>
+</form>
+
+
+
+<br><br><br><br><br><br>
+
+<form>
+  <li ng-repeat="item in [1, 2, 3, 4] track by $index">
+
+           Qty: <input type="number"  ng-model="qty[$index]">
+           Price: <input type="number" ng-model="price[$index]">
+           {{ (price[$index]) * (qty[$index]) || " " }}
+  </li>
+</form>

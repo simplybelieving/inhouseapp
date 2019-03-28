@@ -1,0 +1,54 @@
+
+
+<div class="row">
+<div class="product-explain">
+  <div class="col-md-12"> <b>Name:</b> {{name}} </div>
+  <div class="col-md-4"> <b>TIN Number:</b>{{tin}}</div>
+  <div class="col-md-8"> <b>VAT/NON-VAT:</b>{{taxable}}</div>
+  <div class="col-md-4"> <b>Address:</b>{{address}}</div>
+  <div class="col-md-8"> <b>Type:</b>{{type}}</div>
+
+</div></div>
+
+<br>
+
+<div class="container" >
+<div  class="table-responsive">
+<table class="table">
+
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Unit</th>
+    <th>Date</th>
+    <th>Update Pricing</th>
+    <th></th>
+  </tr>
+  </thead>
+
+
+<tr ng-repeat= "List in viewPricelistCtrl.pricelistArray track by $index">
+
+
+   <td> {{List._productname}} </td>
+   <td> {{List.price}} </td>
+   <td> {{List.unit}} </td>
+   <td> {{List.date}} </td>
+   <td> <input class="form-control" name="price[$index]" ng-model="viewPricelistCtrl.pricelistArray[$index].price"></td>
+   <td> <button ng-click="viewPricelistCtrl.editPrice(type, pricelistArray, $index);" class="btn btn-primary">Saving Edit </button> </td>
+</tr>
+
+
+
+<td>  </td>
+<td> </td>
+
+
+
+</table>
+
+
+</div>
+
+</div>

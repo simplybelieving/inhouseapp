@@ -1,0 +1,47 @@
+
+<div class="page-header">
+<h1>Add Clients</h1>
+</div>
+
+<form ng-submit="addClientCtrl.addItem(addData);">
+
+   <label>NAME:</label>
+   <input class="form-control" type="text" name="name" ng-model="addClientCtrl.addData.name">
+   </br>
+
+   <label>TIN NUMBER:</label>
+   <input class="form-control" type="text" name="tin" ng-model="addClientCtrl.addData.tin">
+   </br>
+   <label>NON-TAX/TAXABLE:</label>
+  <select class="form-control" type="text" name="taxable" ng-model="addClientCtrl.addData.taxable">
+  <option value="">
+  <option value="NON-VAT">NON-VAT
+  <option value="VATABLE">VATABLE
+  </select>
+   </br>
+
+   <label>TYPE:</label>
+   <select class="form-control" type="text" name="type" ng-model="addClientCtrl.addData.type">
+   <option value="">
+   <option value="SUPPLIER"> SUPPLIER
+   <option value="CUSTOMER"> CUSTOMER
+   </select>
+   </br>
+   <label>ADDRESS:</label>
+   <input class="form-control" type="text" name="address" ng-model="addClientCtrl.addData.address">
+   </br>
+
+
+   <button class="btn btn-primary" type="submit"> Register </button>
+
+</form>
+
+</br>
+<div class="row show-hide-message" ng-show="addClientCtrl.successMsg">
+  <div class="alert alert-success">{{ addCtrl.successMsg}}</div>
+</div>
+
+</br>
+<div class="row show-hide-message"  ng-show="addClientCtrl.errorMsg">
+  <div class="alert alert-danger">{{ addCtrl.errorMsg}}</div>
+</div>
