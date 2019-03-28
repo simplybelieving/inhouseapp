@@ -30,6 +30,29 @@ module.exports = function(router){
   });
 
 
+  router.post('/ponumber', function(req, res){
+
+  var po = new model.PurchaseOrder();
+  po.user =  req.body.user;
+  po.ponumber = req.body.ponumber;
+  po.date =  new Date();
+
+  if( req.body.ponumber==null ){
+    res.json({ success:false, message: 'Ensure these items are provided...'});
+  }
+  else{
+  po.save(function(err){
+     if(err){
+      res.json({ success: false, message:'Item already exist!'});
+    }else{
+      res.json({ success: true, message:'Created!'});
+    }
+
+    });
+
+  }
+  });
+
 
   router.post('/users', function(req, res){
 
