@@ -1,0 +1,35 @@
+
+<div class="page-header">
+<h2>Add Purchase Order</h2>
+</div>
+
+<div class="logindesign">
+<div class="loginmargin >
+
+<form ng-submit="addpoCtrl.addItem(addData);">
+
+   <label>NAME:</label>
+   <input class="form-control" type="text" name="user" ng-model="addpoCtrl.addData.user">
+   </br>
+
+   <label>PO NUMBER:</label>
+   <input class="form-control" type="text" name="ponumber" ng-model="addpoCtrl.addData.ponumber">
+   </br>
+
+
+   <button class="btn btn-primary" type="submit"> Add Purchase Order </button>
+
+</form>
+
+</div>
+</div>
+
+</br>
+<div class="row show-hide-message" ng-show="addpoCtrl.successMsg">
+  <div class="alert alert-success">{{ addpoCtrl.successMsg}}</div>
+</div>
+
+</br>
+<div class="row show-hide-message"  ng-show="addpoCtrl.errorMsg">
+  <div class="alert alert-danger">{{ addpoCtrl.errorMsg}}</div>
+</div>
