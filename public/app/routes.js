@@ -15,6 +15,13 @@ var app = angular.module('appRoutes', ['ngRoute'])
    .when('/',{
      templateUrl: 'app/views/pages/home.html'
    })
+   
+      .when('/productdetails',{
+     templateUrl: 'app/views/pages/productdetails.html',
+     controller: 'showItems',
+     controllerAs: 'showItems'
+   })
+
 
    .when('/invoice',{
      templateUrl: 'app/views/pages/invoice.html',
