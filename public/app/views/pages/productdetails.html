@@ -1,21 +1,16 @@
+<div class="container">
 
-<div class="row">
+    <div class="row">
+     <div  ng-repeat= "items in showItems.items">
 
+        <table class="table">
 
-<div class="col-12 col-md-8">
-<div ng-submit="detailsCtrl.showdetails(newName, newDescription, newImage, newType)"></div>
-<img style="max-width: 100%; padding-bottom: 5%; height: auto; width: auto\9;" ng-src= {{newImage}}>
-
-
-</div>
-
-<div class="col-6 col-md-4">
-
-<div class="product-title">{{newName}}</div>
-
-<div class="product-explain">{{newDescription}}
-{{newType}}
+         <tr>
+         <td>
+          {{items.productname}}
+        </td>
+        </tr>
+     </table>
 
 
-</div></div></div>
-</div>
+  </div> </div> </div>
