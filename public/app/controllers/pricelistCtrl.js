@@ -19,6 +19,16 @@ var app = this;
 .controller('searchCtrl', function($http, $scope, $routeParams, Pricelist){
 var app = this;
 
+this.editPrice = function(pricelist, $index){
+
+$http.post('/api/editPricelist', {product_id:pricelist._id, productname:this.pricelist[$index]._productname, newPrice:this.pricelist[$index].price} ).then(function(data){
+
+   if(data.data.success){ app.successMsg= data.data.message; } else{ app.errorMsg = data.data.message;}
+
+});
+
+};
+
 
 
      if($routeParams.id!=null){
