@@ -30,29 +30,6 @@ module.exports = function(router){
   });
 
 
-  router.post('/ponumber', function(req, res){
-
-  var po = new model.PurchaseOrder();
-  po.user =  req.body.user;
-  po.ponumber = req.body.ponumber;
-  po.date =  new Date();
-
-  if( req.body.ponumber==null ){
-    res.json({ success:false, message: 'Ensure these items are provided...'});
-  }
-  else{
-  po.save(function(err){
-     if(err){
-      res.json({ success: false, message:'Item already exist!'});
-    }else{
-      res.json({ success: true, message:'Created!'});
-    }
-
-    });
-
-  }
-  });
-
 
   router.post('/users', function(req, res){
 
@@ -65,6 +42,32 @@ module.exports = function(router){
   }
   else{
   user.save(function(err){
+     if(err){
+      res.json({ success: false, message:'Item already exist!'});
+    }else{
+      res.json({ success: true, message:'Created!'});
+    }
+
+    });
+
+  }
+  });
+
+
+  router.post('/ponumber', function(req, res){
+
+  var po = new model.PurchaseOrder();
+  po.user =  req.body.user;
+  po.ponumber = req.body.ponumber;
+  po.date =  new Date();
+
+
+
+  if( req.body.ponumber==null ){
+    res.json({ success:false, message: 'Ensure these items are provided...'});
+  }
+  else{
+  po.save(function(err){
      if(err){
       res.json({ success: false, message:'Item already exist!'});
     }else{
@@ -213,14 +216,11 @@ module.exports = function(router){
 
 router.post('/editPricelist', function(req, res){
  var today = new Date();
-  console.log(req.body.client_type);
 
- //model.Product.findOne({productname:req.body.productname }, function(err, product) {
 
   if(req.body.client_type=='SUPPLIER')
   model.Product.update({productname:req.body.productname}, {$set:{cheapest_price:req.body.newPrice}}, function(err, message) {
      });
- //});
 
 
 if(mongoose.Types.ObjectId.isValid(req.body.product_id))
@@ -268,7 +268,7 @@ router.get('/viewPricelist/:id', function(req, res){
                )} else{
 
    decodeURI(idcheck);console.log(idcheck);
-   model.Pricelist.find({_productname:{$regex: idcheck ,$options:"$i"}, type:'SUPPLIER'}, function(err, pricelist){
+   model.Pricelist.find({_productname:{$regex: idcheck ,$options:"$i"}}, function(err, pricelist){
       res.json({ pricelist: pricelist });
     });
   }
