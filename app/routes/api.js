@@ -217,19 +217,32 @@ module.exports = function(router){
 router.post('/editPricelist', function(req, res){
  var today = new Date();
 
+ if(!req.body.discount){
+   if(mongoose.Types.ObjectId.isValid(req.body.product_id))
+   model.Pricelist.update({_id:req.body.product_id}, {$set:{price:req.body.newPrice, date:today}}, function(err, message) {
+       if (err)
+             res.json({ success:false, message: 'Ensure these items are provided...'});
+       else
+             res.json({ success:true, message: 'Read the array elements YEAH BITCH'});
+   });
+
+ }else{
+   model.Pricelist.update({_id:req.body.product_id}, {$set:{discount:req.body.discount, price:req.body.newPrice, date:today}}, function(err, message) {
+       if (err)
+             res.json({ success:false, message: 'Ensure these items are provided...'});
+       else
+             res.json({ success:true, message: 'Read the array elements YEAH BITCH'});
+   });
+
+ }
+
 
   if(req.body.client_type=='SUPPLIER')
   model.Product.update({productname:req.body.productname}, {$set:{cheapest_price:req.body.newPrice}}, function(err, message) {
-     });
-
-
-if(mongoose.Types.ObjectId.isValid(req.body.product_id))
-  model.Pricelist.update({_id:req.body.product_id}, {$set:{price:req.body.newPrice, date:today}}, function(err, message) {
-      if (err)
-            res.json({ success:false, message: 'Ensure these items are provided...'});
-      else
-            res.json({ success:true, message: 'Read the array elements YEAH BITCH'});
   });
+
+
+
 
 });
 
