@@ -35,7 +35,7 @@
    <td> {{List._productname}} </td>
    <td> {{List.price}} </td>
    <td> {{List.unit}} </td>
-   <td> {{List.discount}} </td>
+   <td> <input class="form-control" name="discount[$index]" ng-model="viewPricelistCtrl.pricelistArray[$index].discount"></td>
    <td> {{List.date}} </td>
    <td> <input class="form-control" name="price[$index]" ng-model="viewPricelistCtrl.pricelistArray[$index].price"></td>
    <td> <button ng-click="viewPricelistCtrl.editPrice(type, pricelistArray, $index);" class="btn btn-primary">Saving Edit </button> </td>
